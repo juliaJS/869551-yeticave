@@ -1,7 +1,7 @@
 # Личный проект «YetiCave»
 
 * Студент: [Iuliia Kiseleva](https://up.htmlacademy.ru/php/7/user/869551).
-* Наставник: `Неизвестно`.
+* Наставник: `Сергей Парфенов` (https://htmlacademy.ru/profile/id926645).
 
 ---
 
