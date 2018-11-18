@@ -1,7 +1,7 @@
 <?php
 $is_auth = rand(0, 1);
 
-$user_name = 'Julia'; // укажите здесь ваше имя
+$user_name = 'Юлия'; // укажите здесь ваше имя
 $user_avatar = 'img/user.jpg';
 ?>
 <!DOCTYPE html>
@@ -28,8 +28,8 @@ $user_avatar = 'img/user.jpg';
         <a class="main-header__add-lot button" href="pages/add-lot.html">Добавить лот</a>
 
         <nav class="user-menu">
-<?php $is_auth === 1; ?>
-<?php if ($is_auth === 1): ?>
+
+<?php if ($is_auth === 1) : ?>
  <div class="user-menu__image">
     <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
   </div>
@@ -37,7 +37,7 @@ $user_avatar = 'img/user.jpg';
     <p><?php print($user_name); ?></p>
   </div>
   
-<?php elseif ($is_auth === 0): ?>
+<?php elseif ($is_auth === 0) : ?>
  <ul class="user-menu__list">
     <li class="user-menu__item">
       <a href="#">Регистрация</a>
@@ -47,6 +47,7 @@ $user_avatar = 'img/user.jpg';
     </li>
   </ul>
 <?php endif; ?>
+
         <!-- здесь должен быть PHP код для показа аватара пользователя -->
 
         </nav>
