@@ -3,6 +3,52 @@ $is_auth = rand(0, 1);
 
 $user_name = 'Юлия'; // укажите здесь ваше имя
 $user_avatar = 'img/user.jpg';
+
+$categories = [ "Доски и лыжи" , "Крепления" , "Ботинки" , "Одежда" , "Инструменты" , "Разное" ];
+
+$option_list = [
+    [
+       'name' => '2014 Rossignol District Snowboard',
+	   'category' => 'Доски и лыжи',
+	   'price' => 10999,
+	   'picture' => 'img/lot-1.jpg'
+    ],
+
+    [
+       'name' => 'DC Ply Mens 2016/2017 Snowboard',
+	   'category' => 'Доски и лыжи',
+	   'price' => 159999,
+	   'picture' => 'img/lot-2.jpg'
+    ],
+
+    [
+       'name' => 'Крепления Union Contact Pro 2015 года размер L/XL',
+	   'category' => 'Крепления',
+	   'price' => 8000,
+	   'picture' => 'img/lot-3.jpg'
+    ],
+
+    [
+       'name' => 'Ботинки для сноуборда DC Mutiny Charocal',
+	   'category' => 'Ботинки',
+	   'price' => 10999,
+	   'picture' => 'img/lot-4.jpg'
+    ],
+
+    [
+       'name' => 'Куртка для сноуборда DC Mutiny Charocal',
+	   'category' => 'Одежда',
+	   'price' => 7500,
+	   'picture' => 'img/lot-5.jpg'
+    ],
+
+    [
+       'name' => 'Маска Oakley Canopy',
+	   'category' => 'Разное',
+	   'price' => 5400,
+	   'picture' => 'img/lot-6.jpg'
+	]
+];
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -59,73 +105,18 @@ $user_avatar = 'img/user.jpg';
         <h2 class="promo__title">Нужен стафф для катки?</h2>
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
-            <!--заполните этот список из массива категорий-->
-            <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="pages/all-lots.html">
-				<?php
-$categories = [ "Доски и лыжи" , "Крепления" , "Ботинки" , "Одежда" , "Инструменты" , "Разное" ];
-$index = 0;
-$num_count = count($categories);
-?>
-<nav>
- <?php while($index < $num_count) : ?>
- <a href="/?cat=<?=$index;?>"><?=$categories[$index];?></a>
- <?php $index = $index + 1; ?>
- <?php endwhile; ?>
-</nav>
-</a>
-            </li>
+		    <?php foreach ($categories as $category) : ?>
+			<!--заполните этот список из массива категорий-->
+			<li class="promo__item promo__item--boards">
+				<a class="promo__link" href="pages/all-lots.html"><?= $category ?></a>
+			</li>
+			<?php endforeach; ?>
         </ul>
     </section>
     <section class="lots">
         <div class="lots__header">
             <h2>Открытые лоты</h2>
         </div>
-		<?php
-$option_list = [
-    [
-       'name' => '2014 Rossignol District Snowboard',
-	   'category' => 'Доски и лыжи',
-	   'price' => 10999,
-	   'picture' => 'img/lot-1.jpg'
-    ],
-
-    [
-       'name' => 'DC Ply Mens 2016/2017 Snowboard',
-	   'category' => 'Доски и лыжи',
-	   'price' => 159999,
-	   'picture' => 'img/lot-2.jpg'
-    ],
-
-    [
-       'name' => 'Крепления Union Contact Pro 2015 года размер L/XL',
-	   'category' => 'Крепления',
-	   'price' => 8000,
-	   'picture' => 'img/lot-3.jpg'
-    ],
-
-    [
-       'name' => 'Ботинки для сноуборда DC Mutiny Charocal',
-	   'category' => 'Ботинки',
-	   'price' => 10999,
-	   'picture' => 'img/lot-4.jpg'
-    ],
-
-    [
-       'name' => 'Куртка для сноуборда DC Mutiny Charocal',
-	   'category' => 'Одежда',
-	   'price' => 7500,
-	   'picture' => 'img/lot-5.jpg'
-    ],
-
-    [
-       'name' => 'Маска Oakley Canopy',
-	   'category' => 'Разное',
-	   'price' => 5400,
-	   'picture' => 'img/lot-6.jpg'
-	]
-];
-?>
         <ul class="lots__list">
             <!--заполните этот список из массива с товарами-->
 			<?php foreach ($option_list as $key => $item) : ?>
@@ -156,22 +147,12 @@ $option_list = [
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
+			<?php foreach ($categories as $category) : ?>
             <!--заполните этот список из массива категорий-->
-            <li class="nav__item">
-                <a href="pages/all-lots.html">
-				<?php
-$categories = [ "Доски и лыжи" , "Крепления" , "Ботинки" , "Одежда" , "Инструменты" , "Разное" ];
-$index = 0;
-$num_count = count($categories);
-?>
-<nav>
- <?php while($index < $num_count) : ?>
- <a href="/?cat=<?=$index;?>"><?=$categories[$index];?></a>
- <?php $index = $index + 1; ?>
- <?php endwhile; ?>
-</nav>
-				</a>
-            </li>
+	        <li class="nav__item">
+				<a href="pages/all-lots.html"><?= $category ?></a>
+			</li>
+			<?php endforeach; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
