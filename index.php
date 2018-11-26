@@ -50,9 +50,8 @@ $option_list = [
 	]
 ];
 
-function cut_num(
-	$price
-) {
+function cut_num($price)
+ {
 	$num = ceil($price);
 	
 	if ($num > 1000) {
