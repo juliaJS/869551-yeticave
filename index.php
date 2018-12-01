@@ -81,24 +81,24 @@ function cut_num($price)
 
         <nav class="user-menu">
 
-<?php if ($is_auth === 1) : ?>
- <div class="user-menu__image">
-    <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
-  </div>
-  <div class="user-menu__logged">
-    <p><?php print($user_name); ?></p>
-  </div>
+    <?php if ($is_auth === 1) : ?>
+        <div class="user-menu__image">
+            <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
+        </div>
+        <div class="user-menu__logged">
+            <p><?php print($user_name); ?></p>
+        </div>
   
-<?php elseif ($is_auth === 0) : ?>
- <ul class="user-menu__list">
-    <li class="user-menu__item">
-      <a href="#">Регистрация</a>
-    </li>
-    <li class="user-menu__item">
-      <a href="#">Вход</a>
-    </li>
-  </ul>
-<?php endif; ?>
+    <?php elseif ($is_auth === 0) : ?>
+        <ul class="user-menu__list">
+             <li class="user-menu__item">
+                 <a href="#">Регистрация</a>
+             </li>
+            <li class="user-menu__item">
+                 <a href="#">Вход</a>
+            </li>
+        </ul>
+    <?php endif; ?>
 
         <!-- здесь должен быть PHP код для показа аватара пользователя -->
 
@@ -112,10 +112,10 @@ function cut_num($price)
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
 		    <?php foreach ($categories as $category) : ?>
-			<!--заполните этот список из массива категорий-->
-			<li class="promo__item promo__item--boards">
-				<a class="promo__link" href="pages/all-lots.html"><?= $category ?></a>
-			</li>
+			                                <!--заполните этот список из массива категорий-->
+			    <li class="promo__item promo__item--boards">
+			    	<a class="promo__link" href="pages/all-lots.html"><?= $category ?></a>
+			    </li>
 			<?php endforeach; ?>
         </ul>
     </section>
@@ -124,27 +124,27 @@ function cut_num($price)
             <h2>Открытые лоты</h2>
         </div>
         <ul class="lots__list">
-            <!--заполните этот список из массива с товарами-->
+                                           <!--заполните этот список из массива с товарами-->
 			<?php foreach ($option_list as $key => $item) : ?>
-            <li class="lots__item lot">
-                <div class="lot__image">
-                    <img src="<?=$item['picture']; ?>" width="350" height="260" alt="">
-                </div>
-                <div class="lot__info">
-                    <span class="lot__category"><?=$item['category']; ?></span>
-                    <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=$item['name']; ?></a></h3>
-                    <div class="lot__state">
-                        <div class="lot__rate">
+                <li class="lots__item lot">
+                    <div class="lot__image">
+                       <img src="<?=$item['picture']; ?>" width="350" height="260" alt="">
+                    </div>
+                    <div class="lot__info">
+                        <span class="lot__category"><?=$item['category']; ?></span>
+                          <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=$item['name']; ?></a></h3>
+                      <div class="lot__state">
+                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
                             <span class="lot__cost"><?=cut_num($item['price']); ?></span>
-                        </div>
-                        <div class="lot__timer timer">
+                         </div>
+                         <div class="lot__timer timer">
                             12:23
-                        </div>
+                         </div>
+                      </div>
                     </div>
-                </div>
-            </li>
-		<?php endforeach; ?>
+                </li>
+		    <?php endforeach; ?>
         </ul>
     </section>
 </main>
@@ -154,10 +154,10 @@ function cut_num($price)
     <nav class="nav">
         <ul class="nav__list container">
 			<?php foreach ($categories as $category) : ?>
-            <!--заполните этот список из массива категорий-->
-	        <li class="nav__item">
-				<a href="pages/all-lots.html"><?= $category ?></a>
-			</li>
+                                                         <!--заполните этот список из массива категорий-->
+	          <li class="nav__item">
+			    	 <a href="pages/all-lots.html"><?= $category ?></a>
+			  </li>
 			<?php endforeach; ?>
         </ul>
     </nav>
