@@ -2,13 +2,12 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title><? $title ?></title>
+    <title><?= $title ?></title>
     <link href="css/normalize.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
 <div class="page-wrapper">
-
 <header class="main-header">
     <div class="main-header__container container">
         <h1 class="visually-hidden">YetiCave</h1>
@@ -20,9 +19,7 @@
             <input class="main-header__search-btn" type="submit" name="find" value="Найти">
         </form>
         <a class="main-header__add-lot button" href="pages/add-lot.html">Добавить лот</a>
-
         <nav class="user-menu">
-
             <?php if ($is_auth === 1) : ?>
                 <div class="user-menu__image">
                     <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
@@ -30,7 +27,6 @@
                 <div class="user-menu__logged">
                     <p><?php print($user_name); ?></p>
                 </div>
-  
             <?php elseif ($is_auth === 0) : ?>
                 <ul class="user-menu__list">
                      <li class="user-menu__item">
@@ -41,23 +37,17 @@
                     </li>
                 </ul>
             <?php endif; ?>
-
-        <!-- здесь должен быть PHP код для показа аватара пользователя -->
-
         </nav>
     </div>
 </header>
-
 <main class="container">
-    <?= htmlspecialchars($content) ?>
+    <?= $content ?>
 </main>
 </div>
-
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
 			<?php foreach ($categories as $category) : ?>
-            <!--заполните этот список из массива категорий-->
 	        <li class="nav__item">
 				<a href="pages/all-lots.html"><?= $category ?></a>
 			</li>

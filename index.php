@@ -5,7 +5,7 @@ require_once('templates/layout.php');
 
 $is_auth = rand(0, 1);
 
-$user_name = 'Юлия'; // укажите здесь ваше имя
+$user_name = 'Юлия';
 $user_avatar = 'img/user.jpg';
 
 $categories = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
