@@ -1,7 +1,5 @@
 <?php
 require_once('functions.php');
-require_once('templates/index.php');
-require_once('templates/layout.php');
 
 $is_auth = rand(0, 1);
 
@@ -10,7 +8,7 @@ $user_avatar = 'img/user.jpg';
 
 $categories = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
 
-$option_list = [
+$lots = [
     [  	'name' => '2014 Rossignol District Snowboard',
 		'category' => 'Доски и лыжи',
 		'price' => 10999,
@@ -54,13 +52,16 @@ function cut_num($price)
 	return $price;
 }
 
-$page_content = include_template('templates/index.php', [
-	'category' => $categories
+$page_content = include_template('index.php', [
+	'categories' => $categories,
+    'lots' => $lots
 ]);
-$layout_content = include_template('templates/layout.php', [
+$layout_content = include_template('layout.php', [
     'content' => $page_content,
     'title' => 'Yeti Cave | Главная',
-    'user_name' => $user_name
+    'user_name' => $user_name,
+    'categories' => $categories,
+    'is_auth' => $is_auth
 ]);
 
 print($layout_content);
