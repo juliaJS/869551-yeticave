@@ -13,10 +13,10 @@ CREATE TABLE categories(
 
 CREATE TABLE lots(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_user INT,
-	id_category INT,
-	dt_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	user_id INT,
+	category_id INT,
 	rate_id INT,
+	dt_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	title CHAR(128),
 	description CHAR,
     image CHAR(255),
@@ -25,18 +25,19 @@ CREATE TABLE lots(
     increment_rate INT
 );
 
-CREATE TABLE rate(
+CREATE TABLE rates(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_user INT,
-	id_lot INT,
+	user_id INT,
+	lot_id INT,
+	increment_rate_id INT,
 	dt_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     desired_price INT
 );
 
 CREATE TABLE users(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_lot INT,
-	id_rate INT,
+	lot_id INT,
+	rate_id INT,
 	dt_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	email CHAR(128)  NOT NULL UNIQUE,
 	name CHAR(25),
