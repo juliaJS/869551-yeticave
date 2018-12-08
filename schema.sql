@@ -8,45 +8,41 @@ USE yeticave;
 
 CREATE TABLE categories(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	name CHAR(64)
+	name VARCHAR(255) NOT NULL UNIQUE
 );
 
 CREATE TABLE lots(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	user_id INT,
+	winner_id INT,
 	category_id INT,
-	rate_id INT,
-	dt_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	title CHAR(128),
-	description CHAR,
-    image CHAR(255),
-	price INT,
-	dt_stop_sale TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    increment_rate INT
+	create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	title VARCHAR(255) NOT NULL UNIQUE,
+	description VARCHAR(255) NOT NULL,
+  image VARCHAR(255) NOT NULL,
+	price INT NOT NULL,
+	end_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  increment_rate INT NOT NULL
 );
 
 CREATE TABLE rates(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	user_id INT,
-	lot_id INT,
-	increment_rate_id INT,
-	dt_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    desired_price INT
+	user_id INT NOT NULL,
+	lot_id INT NOT NULL,
+	amount INT NOT NULL,
+	create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  desired_price INT
 );
 
 CREATE TABLE users(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	lot_id INT,
-	rate_id INT,
-	dt_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	email CHAR(128)  NOT NULL UNIQUE,
-	name CHAR(25),
-	password CHAR(64),
-    avatar CHAR(255)
+	lot_id INT NOT NULL,
+	create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	email VARCHAR(320) NOT NULL UNIQUE,
+	name VARCHAR(255) NOT NULL UNIQUE,
+	password VARCHAR(255) NOT NULL UNIQUE,
+  avatar VARCHAR(255) NOT NULL
 );
-	
-CREATE UNIQUE INDEX name ON users(name);	
-CREATE INDEX all_lots ON lots(title); 
 
 
 	
