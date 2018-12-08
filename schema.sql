@@ -16,6 +16,7 @@ CREATE TABLE lots(
 	id_user INT,
 	id_category INT,
 	dt_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	rate_id INT,
 	title CHAR(128),
 	description CHAR,
     image CHAR(255),
@@ -29,7 +30,7 @@ CREATE TABLE rate(
 	id_user INT,
 	id_lot INT,
 	dt_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  ? desired_price INT
+    desired_price INT
 );
 
 CREATE TABLE users(
@@ -42,34 +43,6 @@ CREATE TABLE users(
 	password CHAR(64),
     avatar CHAR(255)
 );
-	
-
-INSERT INTO categories
-	SET name = 'Доски и лыжи', name = 'Крепления', name = 'Ботинки', 
-	name = 'Одежда', name = 'Инструменты', name = 'Разное';
-	
-INSERT INTO lots
-	SET title = '2014 Rossignol District Snowboard', image = 'img/lot-1.jpg', price = '10999';
-	
-INSERT INTO lots
-	SET title = 'DC Ply Mens 2016/2017 Snowboard', image = 'img/lot-2.jpg', price = '159999';
-	
-INSERT INTO lots
-	SET title = 'Крепления Union Contact Pro 2015 года размер L/XL', image = 'img/lot-3.jpg', price = '8000';
-	
-INSERT INTO lots
-	SET title = 'Ботинки для сноуборда DC Mutiny Charocal', image = 'img/lot-4.jpg', price = '10999';
-	
-INSERT INTO lots
-	SET title = 'Куртка для сноуборда DC Mutiny Charocal', image = 'img/lot-5.jpg', price = '7500';
-	
-INSERT INTO lots
-	SET title = 'Маска Oakley Canopy', image = 'img/lot-6.jpg', price = '5400';
-	
-	
-INSERT INTO users
-	name = 'Юлия', avatar = 'img/user.jpg';
-	
 	
 CREATE UNIQUE INDEX name ON users(name);	
 CREATE INDEX all_lots ON lots(title); 
