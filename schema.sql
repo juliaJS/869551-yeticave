@@ -21,7 +21,7 @@ CREATE TABLE lots(
 	description VARCHAR(255) NOT NULL,
   image VARCHAR(255) NOT NULL,
 	price INT NOT NULL,
-	end_time TIMESTAMP NOT NULL,
+	end_time TIMESTAMP NULL,
   increment_rate INT NOT NULL
 );
 
@@ -30,11 +30,11 @@ CREATE TABLE rates(
 	user_id INT NOT NULL,
 	lot_id INT NOT NULL,
 	amount INT NOT NULL,
-	create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX user_id_idx ON rates(user_id);
-CREATE INDEX lot_id_idx ON rstes(lot_id);
+CREATE INDEX lot_id_idx ON rates(lot_id);
 
 CREATE TABLE users(
 	id INT AUTO_INCREMENT PRIMARY KEY,
