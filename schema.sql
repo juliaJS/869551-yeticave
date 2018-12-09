@@ -13,15 +13,15 @@ CREATE TABLE categories(
 
 CREATE TABLE lots(
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	user_id INT,
-	winner_id INT,
-	category_id INT,
+	user_id INT NOT NULL,
+	winner_id INT NOT NULL,
+	category_id INT NOT NULL,
 	create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	title VARCHAR(255) NOT NULL UNIQUE,
 	description VARCHAR(255) NOT NULL,
   image VARCHAR(255) NOT NULL,
 	price INT NOT NULL,
-	end_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	end_time TIMESTAMP NOT NULL,
   increment_rate INT NOT NULL
 );
 
@@ -31,7 +31,6 @@ CREATE TABLE rates(
 	lot_id INT NOT NULL,
 	amount INT NOT NULL,
 	create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  desired_price INT
 );
 
 CREATE INDEX user_id_idx ON rates(user_id);
@@ -43,7 +42,7 @@ CREATE TABLE users(
 	create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	email VARCHAR(320) NOT NULL UNIQUE,
 	name VARCHAR(255) NOT NULL UNIQUE,
-	password VARCHAR(255) NOT NULL UNIQUE,
+	password VARCHAR(255) NOT NULL,
   avatar VARCHAR(255) NOT NULL
 );
 
