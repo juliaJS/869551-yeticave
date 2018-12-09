@@ -34,6 +34,9 @@ CREATE TABLE rates(
   desired_price INT
 );
 
+CREATE INDEX user_id_idx ON rates(user_id);
+CREATE INDEX lot_id_idx ON rstes(lot_id);
+
 CREATE TABLE users(
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	lot_id INT NOT NULL,
