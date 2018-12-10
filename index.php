@@ -6,6 +6,59 @@ $is_auth = rand(0, 1);
 $user_name = 'Юлия';
 $user_avatar = 'img/user.jpg';
 
+
+/*
+//Подключение
+$con = mysqli_connect("localhost", "root", "", "yeticave");
+
+//Кодировка
+mysqli_set_charset($con, "utf8");
+
+//Получение текста ошибки или успешности подключения
+if ($con == false) {
+	print ("Ошибка подключения: " . mysqli_connect_error());
+}
+else {
+	//Чтение данных
+	$sql = 'SELECT * FROM categories';
+	//выполняем запрос
+	$result = mysqli_query($con, $sql);
+
+	//запрос выполнен успешно
+	if ($result) {
+		//результат преобразуем в массив
+		$categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	}
+	else {
+		//получить текст последней ошибки
+		print ("Ошибка подключения: " . mysqli_error($con));
+	}
+
+	//Запрос на показ лотов
+	$sql = 'SELECT l.id, l.title, l.price, l.image, c.name, MAX(r.amount) FROM lots l'
+		 . 'LEFT JOIN categories c ON c.id = l.category_id'
+		 . 'LEFT JOIN rates r ON r.lot_id = l.id'
+		 . 'GROUP BY l.id'
+		 . 'ORDER BY l.`create_time` DESC';
+
+	//выполняем запрос и получаем результат
+	if ($res = mysqli_query($con, $sql)) {
+		$lots = mysqli_fetch_all($res, MYSQLI_ASSOC);
+
+		//Передаем в шаблон результат выполнения
+		$content = include_template('layout.php', ['lots' => $lots]);
+	else {
+		//либо подключаем шаблон с ошибкой
+		print ("Ошибка подключения: " . mysqli_error($con));
+	}
+}
+
+print(include_template('index.php', ['content' => $content, 'categories' => $categories]));
+
+*/
+
+
+
 $categories = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
 
 $lots = [
@@ -40,6 +93,7 @@ $lots = [
 	   'picture' => 'img/lot-6.jpg'
 	]
 ];
+
 
 $page_content = include_template('index.php', [
 	'categories' => $categories,
