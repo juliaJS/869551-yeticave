@@ -1,17 +1,16 @@
 <?php
 require_once('functions.php');
 
-$is_auth = rand(0, 1);
+$config = ['db' =>
+      [    'host' => 'localhost',
+           'username' => 'root',
+           'password' => '',
+           'database' => 'yeticave'
+      ]
+]; 
 
-$user_name = 'Юлия';
-$user_avatar = 'img/user.jpg';
+$con = mysqli_connect($config);
 
-
-/*
-require_once 'functions.php';
-$cat = require_once 'index.php';
-
-$con = mysqli_connect($cat['localhost'], $cat['root'], $cat[''], $cat['yeticave']);
 mysqli_set_charset($con, "utf8");
 
 if (!$con) {
@@ -46,12 +45,9 @@ else {
 		}
 }
 
-print(include_template('index.php', ['content' => $content,
-		'categories' => $categories]));
-
-*/
-
-
+$is_auth = rand(0, 1);
+$user_name = 'Юлия';
+$user_avatar = 'img/user.jpg';
 
 $categories = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
 
@@ -87,7 +83,6 @@ $lots = [
 	   'picture' => 'img/lot-6.jpg'
 	]
 ];
-
 
 $page_content = include_template('index.php', [
 	'categories' => $categories,
