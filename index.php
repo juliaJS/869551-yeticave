@@ -9,41 +9,43 @@ $config = ['db' =>
       ]
 ]; 
 
-$con = mysqli_connect($config);
+/*
+function connectDb($dbConfig) {
+	$con = mysqli_connect($dbConfig);
+	mysqli_set_charset($con, "utf8");
 
-mysqli_set_charset($con, "utf8");
+	if (!$con) {
+		print("Ошибка в подключении к базе данных: " . mysqli_connect_error());
+	}
 
-if (!$con) {
-	print("Ошибка подключения: " . mysqli_connect_error());
+	return $con;
 }
-else {
-	$sql = 'SELECT * FROM categories';
+
+$con = connectDb($config['db'])
+
+
+function getCategories($con) {
+	$sql = "SELECT * FROM categories";
 	$result = mysqli_query($con, $sql);
+	$categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	return $categories;
+}
+$categories = getCategories($con)
 
-		if ($result) {
-			$categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
-		}
-		else {
-			$error = mysqli_error($con);
-			print("Ошибка MySQL: " . $error);
-		}
 
+function getLots($con) {
 	$sql = 'SELECT l.id, l.title, l.price, l.image, c.name, MAX(r.amount) FROM lots l'
 		 . 'LEFT JOIN categories c ON c.id = l.category_id'
 		 . 'LEFT JOIN rates r ON r.lot_id = l.id'
 		 . 'GROUP BY l.id'
 		 . 'ORDER BY l.`create_time` DESC';
-
-		if ($res = mysqli_query($con, $sql)) {
-				$lots = mysqli_fetch_all($res, MYSQLI_ASSOC);
-
-			$content = include_template('layout.php', ['lots' => $lots]);
-		}
-		else {
-			$error = mysqli_error($con);
-			print("Ошибка MySQL: " . $error);
-		}
+	$result = mysqli_query($con, $sql);
+	$lots = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	return $lots;
 }
+$lots = getLots($con)
+
+ */
 
 $is_auth = rand(0, 1);
 $user_name = 'Юлия';
