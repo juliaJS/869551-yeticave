@@ -27,3 +27,15 @@ function getLots($con) {
     $lots = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $lots;
 }
+
+function getLotById($con, $id) {
+    $sql = 'SELECT l.id, l.title, l.price, l.image, c.name FROM lots l '
+         . 'LEFT JOIN categories c ON c.id = l.category_id '
+         . 'WHERE l.id = ' . $id;
+    $result = mysqli_query($con, $sql);
+    $lots = mysqli_fetch_all($result, MYSQLI_ASSOC);
+     if (!$lots) {
+         return false;
+     }
+     return $lots[0];
+}
